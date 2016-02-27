@@ -1,0 +1,31 @@
+_repo: A-Vindication-of-the-Rights-of-Woman-With-Strictures-on-Political-and-Moral-Subjects_3420
+creator:
+  author:
+    agent_name: Wollstonecraft, Mary
+    aliases:
+    - Cresswick, Mr.
+    - Godwin, Mary Wollstonecraft
+    birthdate: 1759
+    deathdate: 1797
+    gutenberg_agent_id: '84'
+    url: http://www.gutenberg.org/2009/agents/84
+    wikipedia: http://en.wikipedia.org/wiki/Mary_Wollstonecraft
+description: ''
+gutenberg_bookshelf: Best Books Ever Listings
+gutenberg_issued: '2002-09-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '3420'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Women''s rights -- Great Britain'
+- !lcsh 'Women -- History -- 19th century'
+- !lcsh 'Women -- Education -- Great Britain'
+- !lcsh 'Feminism'
+- !lcc 'HQ'
+title: "A Vindication of the Rights of Woman\r\nWith Strictures on Political and Moral\
+  \ Subjects"
+url: http://www.gutenberg.org/ebooks/3420
