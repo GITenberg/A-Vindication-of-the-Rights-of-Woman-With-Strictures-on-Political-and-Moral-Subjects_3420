@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: QHkhot0dDsbs8qDhzHK4JR9sUzTCY/ZMGYIifGKTdenBw3LROw+A/XTyFO6/z6PtYGdqEmAas3ix0DPLFFAgi7Zl0a5q5IMN7wijvSToM8HI5rlIZLSLX9y2IXukG5Ml7Yr+4v2R7GHu03Un7NpMiWeoucCPy8F/RhkyxIs9/G0n/IgL2AkRHZXG7VL/Qj9H91gfrmONUjq8mlfpT7JhJ6uhFGL1mckiYhr1nqSkdOxQiUi8gtHyGOmA7G1CP++6LkBHN9rdHPcTMur+BlevhtY3B2U84MK27kgtCy/aybPyI+o0nXEV9PfBh/ktTpu2nQvI/nmd2b2KrCiLR/pOb+mlCGn2S0U0bnMFTufnvDZJI/8MB2V8FCwF9lTc7WgPE7dcqc4x/TzTzezBs1/r4OSGI9huJ5YftTeo55Vdwnd3LEyg/aL/rYp/fkFFsgRv/IUrDlN7kxpddr/nKwT9eXaqJLAsQ526szHUoXdLCeRvPnCCFSiPaBVkwhWY1/ww35Mc0DR2uG5RG4Won9h2kMDrqKVwD8gyOGgX3mLMzl1ApsbCE5jaj+etj21cai06rGmGxmXuqt6TKpgmKq2XWiuLBLpFl2XhRLtxgl1MAsF91Ql/n062fFW5Rd5M0ixnzMA6J1eA4xfuk1swdAVdxzCqm3dmUjlxgh+hgw9ycpo=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/A-Vindication-of-the-Rights-of-Woman-With-Strictures-on-Political-and-Moral-Subjects_3420
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
