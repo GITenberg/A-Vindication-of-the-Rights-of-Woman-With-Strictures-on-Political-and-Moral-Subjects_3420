@@ -1,5 +1,5 @@
 _repo: A-Vindication-of-the-Rights-of-Woman-With-Strictures-on-Political-and-Moral-Subjects_3420
-_version: 0.2.0
+_version: 0.2.1
 covers:
 - cover_type: generated
   image_path: cover.png
@@ -32,6 +32,7 @@ subjects:
 - !lcsh 'Women -- Education -- Great Britain'
 - !lcsh 'Feminism'
 - !lcc 'HQ'
+- GITenberg
 title: "A Vindication of the Rights of Woman\r\nWith Strictures on Political and Moral\
   \ Subjects"
 url: http://www.gutenberg.org/ebooks/3420
